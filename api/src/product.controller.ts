@@ -1,5 +1,4 @@
 import { Body, Controller, Delete, Get, Param, Post, Put } from "@nestjs/common";
-import { randomUUID } from "crypto";
 import { Product } from "./product.model";
 
 @Controller('product')
