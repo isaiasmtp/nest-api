@@ -5,32 +5,30 @@ import { BookService } from "./book.service";
 @Controller('book')
 export class BookController {
     
-    constructor(private bookService: BookService){
-
-    }
+    constructor(private bookService: BookService){}
 
     @Get()
-    all(): Book[]{
+    async all(): Promise<Book[]> {
         return this.bookService.all();
     }
 
     @Get(':id')
-    find(@Param() params): Book {
+    async find(@Param() params): Promise<Book> {
         return this.bookService.find(params.id)
     }
 
     @Post()
-    create(@Body() book: Book) {
+    async create(@Body() book: Book): Promise<Book> {
         return this.bookService.create(book)
     }
 
     @Put()
-    update(book: Book): Book {
+    async update(book: Book): Promise<[number, Book[]]>  {
         return this.bookService.update(book)
     }
 
     @Delete(':id')
-    remove(id: number): Book {
+    async emove(id: number) {
         return this.bookService.remove(id)
     }
     
